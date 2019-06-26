@@ -1,4 +1,5 @@
 # Table of contents
 
-* [leetcode notebook](README.md)
+* [算法笔记](README.md)
+* [快速排序](quicksort.md)
 
