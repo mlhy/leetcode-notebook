@@ -5,5 +5,6 @@
 * [交换排序](jiao-huan-pai-xu.md)
 * [快速排序](quicksort.md)
 * [215. Kth Largest Element in an Array](215.-kth-largest-element-in-an-array.md)
+* [选择排序](xuan-ze-pai-xu.md)
 * [内部排序算法总结](pai-xu-suan-fa-zong-jie.md)
 
