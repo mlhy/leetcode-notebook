@@ -9,4 +9,5 @@
 * [归并排序](gui-bing-pai-xu.md)
 * [基数排序](ji-shu-pai-xu.md)
 * [内部排序算法总结](pai-xu-suan-fa-zong-jie.md)
+* [外部排序](wai-bu-pai-xu.md)
 
