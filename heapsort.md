@@ -51,13 +51,35 @@ $$O(1)$$ 。
 
 ### 算法思想
 
+堆排序代码主要有调整、建堆和排序三个部分。
 
+#### 建堆
+
+对于无序列 L 需要先进行建堆，使其符合上述堆排序的定义。建堆有两种方法，一种是每次插入一个元素然后调整，这样建堆的时间复杂度为 $$O(nlog_2n)$$ ，不推荐使用；另一种方法是直接对序列 L 中有孩子的结点进行调整，这样建堆的时间复杂度为 $$O(n)$$ 。
+
+#### 调整
+
+调整代码是堆排序的核心。对每一组 $$L(i)$$、$$L(2i+1)$$、 $$L(2i+2)$$ 进行调整，使最大元素在最上面。如果原本最大元素不在最上面的位置，那么交换位置后可能会影响其它的部分位置，需要继续进行判断和调整，这时可以使用递归实现。
+
+**Note：**$$L(2i+2)$$可能不存在。
+
+#### 排序
+
+每一次将堆顶元素取出，将堆底元素放入堆顶，即交换堆顶和堆底元素的位置，重新建堆，此时堆的长度减 1，最后的序列 L 就是一个有序序列。
 
 ### C语言实现（大根堆）
 
 #### 调整的递归实现
 
+{% code-tabs %}
+{% code-tabs-item title="AdjustHeap" %}
 ```c
+void swap(int* a,int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void AdjustHeap(int* a, int index, int n){
     if(index>=n/2)
         return ;
@@ -76,10 +98,20 @@ void AdjustHeap(int* a, int index, int n){
         AdjustHeap(a, big, n);
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### 调整的非递归实现
 
+{% code-tabs %}
+{% code-tabs-item title="AdjustHeap" %}
 ```c
+void swap(int* a,int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void AdjustHeap(int* a, int index, int n){
     while(index<n/2){
         int left = index*2 + 1;
@@ -99,18 +131,26 @@ void AdjustHeap(int* a, int index, int n){
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### 建堆
 
+{% code-tabs %}
+{% code-tabs-item title="BuildHeap" %}
 ```c
 void BuildHeap(int* a, int n){
     for(int i=n/2;i>=0;i--)
         AdjustHeap(a, i, n);
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### 堆排序
 
+{% code-tabs %}
+{% code-tabs-item title="HeapSort" %}
 ```c
 void HeapSort(int *a, int n){
     BuildHeap(a, n);
@@ -120,10 +160,18 @@ void HeapSort(int *a, int n){
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### 时间复杂度
 
+建堆的时间复杂度为 $$O(n)$$。调整的时间复杂度为 $$O(log_2n)$$ 。堆排序在最好、最坏和平均情况下的算法复杂度都是 $$O(nlog_2n)$$ 。
+
 ### 空间复杂度
 
+递归实现的空间复杂度为 $$O(log_2n)$$ ，非递归实现的空间复杂度为 $$O(1)$$ 。
+
 ### 稳定性
+
+不稳定。
 
