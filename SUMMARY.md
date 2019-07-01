@@ -10,4 +10,7 @@
 * [基数排序](ji-shu-pai-xu.md)
 * [内部排序算法总结](pai-xu-suan-fa-zong-jie.md)
 * [外部排序](wai-bu-pai-xu.md)
+* [二叉树的遍历](er-cha-shu-de-bian-li.md)
+* [广度优先搜索](guang-du-you-xian-sou-suo.md)
+* [深度优先搜索](shen-du-you-xian-sou-suo.md)
 
