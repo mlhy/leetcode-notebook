@@ -6,35 +6,35 @@ description: 快速排序是所有内部排序算法中平均性能最优的算�
 
 ### 算法思想
 
-快速排序的特点，每一趟排序后，都会将一个元素（基准元素 `pivot`） 放到指定位置。
+快速排序是基于[分治法](https://zh.wikipedia.org/wiki/%E5%88%86%E6%B2%BB%E6%B3%95)的，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以直接简单地求解，原问题的解即子问题的解的合并。
 
-1. 选择一个元素 `pivot` 作为基准，通过一趟排序将比`pivot`小的元素全部移动到左边，比`pivot`大的元素全部移动大右边，从而确定 `pivot` 的最终位置。
-2. 然后对 `pivot` 左边和右边的部分通过递归算法重复上述过程，直至每个部分只有一个元素或者空。
+快速排序的特点，每一趟排序后，都会将一个元素（基准元素 `pivot`） 放到指定位置。算法主要包含两个部分，**划分**和**递归**，即`Partition()`和`QuickSort()`。
+
+1. `Partition()`每次选择一个元素 `pivot` 作为基准，通过一趟排序将比`pivot`小的元素全部移动到左边，比`pivot`大的元素全部移动大右边，从而确定 `pivot` 的最终位置。
+2. `QuickSort()`对 `pivot` 左边和右边的部分通过递归算法重复上述过程，直至每个部分只有一个元素或者空。
 
 ### C语言实现（递增）
 
 {% code-tabs %}
 {% code-tabs-item title="QuickSort" %}
 ```c
-int Partition(int * a,int low,int high){
-    int pivot = a[low];
-    while(low<high){
-        while(low<high&&a[high]>=pivot)
-            high--;
-        a[low] = a[high];
-        while(high>low&&a[low]<=pivot)
-            low++;
-        a[high] = a[low];
+int Partition(int* a, int left, int right){
+    int pivot = a[left];
+    while(left<right){
+        while(left<right&&a[right]<=pivot)right--;
+        a[left] = a[right];
+        while(left<right&&a[left]>=pivot)left++;
+        a[right] = a[left];
     }
-    a[low] = pivot;
-    return low;
+    a[left] = pivot;
+    return left;
 }
 
-void QuickSort(int * a, int low, int high){
-    if(low<high){
-        int pivotpos = Partition(a, low, high);
-        QuickSort(a, low, pivotpos-1);
-        QuickSort(a, pivotpos+1, high);
+void QuickSort(int* a, int left, int right){
+    if(left<right){
+        int pivot_pos = Partition(a, left, right);
+        QuickSort(a, left, pivot_pos-1);
+        QuickSort(a, pivot_pos+1, right);
     }
 }
 ```
