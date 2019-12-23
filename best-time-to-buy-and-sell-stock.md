@@ -50,6 +50,8 @@ description: LeetCode | Easy | Best Time to Buy and Sell Stock
 | **selling\_price** | 7 | 6 | 6 | 6 | 6 | 4 |
 | **profit** | 0 | 5 | 5 | 5 | 5 | 3 |
 
+### Python 3 实现
+
 ```text
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -79,6 +81,32 @@ class Solution:
         max_profit = max([y - x for x, y in zip(buying_prices,selling_prices)])
         
         return max(max_profit, 0)
+```
+
+### 最优解法-算法优化
+
+在上面的算法中，时间复杂度是 $$O(n)$$，空间复杂度是 $$O(n)$$ 。但是使用了两个长度为 $$n$$ 的循环，并且使用了两个长度为 $$n$$ 的数组来记录买入价和卖出价。但是其实没有必要记录下每一天的买入和卖出价格，只需要一个变量 `buying_price` 来记录买入价，一旦遇到更低的买入价更新此变量即可；同时也不需要计算每天的卖出价，只需要一个变量 `max_profit` 来记录可获得的最大收益，当收益更高时更新 `max_profit` 即可。
+
+优化后的算法时间复杂度依然是是 $$O(n)$$，但是效率依然是提高了，因为只需要一个循环就可以完成；由于不再需要数组记录买入价和卖出价，因此空间复杂度是 $$O(1)$$。
+
+### Python 3 实现
+
+```text
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices) == 0:
+            return 0
+        max_profits = 0
+        buying_price = prices[0]
+        for i in range(len(prices)):
+            if prices[i]<buying_price:
+                buying_price = prices[i]
+            else:
+                profit = prices[i] - buying_price
+                if profit>max_profits:
+                    max_profits = profit
+        return max_profits
+
 ```
 
 
