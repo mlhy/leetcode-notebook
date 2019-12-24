@@ -2,7 +2,7 @@
 description: LeetCode | Easy | Best Time to Buy and Sell Stock
 ---
 
-# Best Time to Buy and Sell Stock
+# 121. Best Time to Buy and Sell Stock
 
 前置知识：数组、动态规划
 
