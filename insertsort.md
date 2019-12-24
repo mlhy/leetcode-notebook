@@ -12,8 +12,7 @@
 
 ### C语言实现
 
-{% code-tabs %}
-{% code-tabs-item title="InsertSort" %}
+{% code title="InsertSort" %}
 ```c
 void InsertSort(int* a, int n){
     int i, j, temp;
@@ -29,8 +28,7 @@ void InsertSort(int* a, int n){
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ### 时间复杂度
 
@@ -62,12 +60,11 @@ $$O(1)$$ 。
 
 ### 算法思想
 
-与直接插入排序相比，只减少了比较的次数，时间复杂度、空间复杂度、稳定性和适应性一致。
+**与直接插入排序相比，只减少了比较的次数，时间复杂度、空间复杂度、稳定性和适应性一致。**
 
 ### C 语言实现
 
-{% code-tabs %}
-{% code-tabs-item title="HalfInsertSort" %}
+{% code title="HalfInsertSort" %}
 ```c
 void HalfInsertSort(int* a, int n){
     for(int i=1;i<n;i++){
@@ -85,8 +82,7 @@ void HalfInsertSort(int* a, int n){
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 ## 希尔排序
 
